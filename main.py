@@ -2,6 +2,7 @@ import time
 from turtle import Screen, Turtle
 from paddle import Paddle
 from ball import Ball
+from score import Scoreboard
 
 game_on = True
 
