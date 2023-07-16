@@ -23,6 +23,7 @@ screen.onkey(r_paddle.go_down, "Down")
 screen.onkey(l_paddle.go_up, "w")
 screen.onkey(l_paddle.go_down, "s")
 
+
 while game_on:
     time.sleep(0.1)
     screen.update()
@@ -33,8 +34,10 @@ while game_on:
     # Detect paddle hits
     if ball.distance(r_paddle) < 50 and ball.xcor() > 320:
         ball.bounce_x()
+        ball.inc_speed()
     elif ball.distance(l_paddle) < 50 and ball.xcor() < -320:
         ball.bounce_x()
+        ball.inc_speed()
     # Detect paddle misses.
     if ball.distance(r_paddle) > 100 and ball.xcor() > 360:
         scoreboard.increment_score_l()
@@ -42,5 +45,9 @@ while game_on:
     elif ball.distance(l_paddle) > 100 and ball.xcor() < -360:
         scoreboard.increment_score_r()
         ball.reset()
+    # Win condition
+    if scoreboard.l_score or scoreboard.r_score == 7:
+        scoreboard.game_over()
+        game_on = False
 
 screen.exitonclick()
