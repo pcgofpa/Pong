@@ -1,5 +1,4 @@
 from turtle import Turtle
-from main import ball, r_paddle, l_paddle
 
 ALIGNMENT = "center"
 FONT = ("Courier", 12, "normal")
@@ -7,7 +6,7 @@ FONT = ("Courier", 12, "normal")
 
 class Scoreboard(Turtle):
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.r_score = 0
         self.l_score = 0
         self.color("silver")
@@ -19,15 +18,15 @@ class Scoreboard(Turtle):
     def update_scoreboard(self):
         self.write(f"Score is: Left: {self.l_score} Right: {self.r_score}")
 
-    def increment_score(self):
-        if ball.distance(r_paddle) > 100 and ball.xcor() > 350:
-            self.l_score += 1
-            self.clear()
-            self.update_scoreboard()
-        elif ball.distance(l_paddle) > 100 and ball.xcor() < -350:
-            self.r_score += 1
-            self.clear()
-            self.update_scoreboard()
+    def increment_score_l(self):
+        self.l_score += 1
+        self.clear()
+        self.update_scoreboard()
+
+    def increment_score_r(self):
+        self.r_score += 1
+        self.clear()
+        self.update_scoreboard()
 
     def game_over(self):
         if self.l_score >= 10:
