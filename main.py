@@ -37,7 +37,9 @@ while game_on:
 
     if ball.distance(r_paddle) > 100 and ball.xcor() > 350:
         scoreboard.increment_score_l()
+        ball.reset()
     elif ball.distance(l_paddle) > 100 and ball.xcor() < -350:
         scoreboard.increment_score_r()
+        ball.reset()
 
 screen.exitonclick()

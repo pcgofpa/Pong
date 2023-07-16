@@ -1,5 +1,6 @@
+# Imports
 from turtle import Turtle
-
+# Constants
 WALL_BOUNDRY = 280
 
 
@@ -24,6 +25,5 @@ class Ball(Turtle):
     def bounce_x(self):
         self.x_move *= -1
 
-    # def wall_bounce(self):
-    #     if self.ycor() > WALL_BOUNDRY or self.ycor() < -WALL_BOUNDRY:
-    #         self.bounce
+    def reset(self):
+        self.goto(0, 0)
